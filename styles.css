@@ -1,20 +1,48 @@
 body, html {
     height: 100%;
     margin: 0;
+    padding: 0;
+    overflow: hidden; /* Hide scrollbars */
+    background-color: black; /* Set background to black */
     font-family: 'Comic Sans MS', cursive, sans-serif;
-    background-color: #f0e1f4;
-    color: #333;
-    transition: background 0.5s ease-in-out; /* Smooth transition for background change */
+}
+
+.video-wrapper {
+    position: fixed; /* Ensure the video stays in place even when scrolling */
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: black; /* Ensures any extra space is black */
+}
+
+#backgroundVideo {
+    display: none; /* Initially hide the video */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; /* Change from cover to contain */
+    max-width: 100%; /* Ensure it does not exceed the container width */
+    max-height: 100%; /* Ensure it does not exceed the container height */
 }
 
 .container {
-    height: 100%;
+    position: absolute;
+    top: 70%; /* Pushed further down from 60% to 70% */
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 20px;
+    z-index: 2; /* Ensure content is above the video */
 }
 
 #birthdayButton {
@@ -26,31 +54,35 @@ body, html {
     border: none;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
 }
 
 #birthdayButton:hover {
     background-color: #ff6392;
     transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
 }
 
 #birthdayButton:active {
     transform: scale(0.95);
+    background-color: #e05383;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
 #imageContainer {
-    display: flex; /* Align images side by side */
+    display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    gap: 20px; /* Increased space between images */
+    flex-wrap: nowrap; /* Ensure all images are in a single row */
+    gap: 20px; /* Space between images */
+    margin-top: 100px; /* Additional space to move images further down */
 }
 
 #imageContainer img {
-    flex: 1 1 auto; /* Flexibility in sizing */
-    max-width: 10%; /* Maximum width of each image reduced */
-    height: auto; /* Maintain aspect ratio */
+    flex: 0 0 auto; /* Do not grow or shrink */
+    max-width: 18%; /* Adjusted size for better fit in a single row */
+    height: auto;
     border-radius: 15px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 0 15px white; /* White glow effect */
     transition: transform 0.3s;
 }
 
@@ -58,10 +90,9 @@ body, html {
     transform: scale(1.1);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     #imageContainer img {
-        max-width: 25%; /* Larger on smaller screens for visibility */
+        max-width: 45%; /* Adjust size on smaller screens */
     }
 
     #birthdayButton {
