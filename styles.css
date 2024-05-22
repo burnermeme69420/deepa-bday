@@ -1,0 +1,71 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #f0e1f4;
+    color: #333;
+    transition: background 0.5s ease-in-out; /* Smooth transition for background change */
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+#birthdayButton {
+    padding: 15px 30px;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: #ff85a2;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#birthdayButton:hover {
+    background-color: #ff6392;
+    transform: scale(1.05);
+}
+
+#birthdayButton:active {
+    transform: scale(0.95);
+}
+
+#imageContainer {
+    display: flex; /* Align images side by side */
+    justify-content: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 20px; /* Increased space between images */
+}
+
+#imageContainer img {
+    flex: 1 1 auto; /* Flexibility in sizing */
+    max-width: 10%; /* Maximum width of each image reduced */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
+}
+
+#imageContainer img:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #imageContainer img {
+        max-width: 25%; /* Larger on smaller screens for visibility */
+    }
+
+    #birthdayButton {
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+}
